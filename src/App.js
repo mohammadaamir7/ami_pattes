@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'; 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import RegisterForm from './forms/register';
+import RegisterDriverForm from './forms/registerDriver';
+import LoginForm from './forms/login';
+import ApplicationLayer from './screens/applicationLayer';
+import NetworkLayer from './screens/networkLayer';
+import TransportLayer from './screens/transportLayer';
+import UpdateForm from './forms/updateUser';
+import Dashboard from './screens/dashboard';
+import LandingPage from './screens/landingPage';
+import ContactUs from './screens/contactUs';
+import AboutUs from './screens/aboutUs';
+import ProtectedRoute from './modules/auth/protectedRoute';
+import AddOrderForm from './forms/addOrder';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route element={<ProtectedRoute />}>
+          <Route path='/dashboard' element={<Dashboard />}/>
+          <Route path='/register-driver' element={<RegisterDriverForm />}/>
+          <Route path='/add-order' element={<AddOrderForm />}/>
+          <Route path='/application-layer' element={<ApplicationLayer />}/>
+          <Route path='/network-layer' element={<NetworkLayer />}/>
+          <Route path='/transport-layer' element={<TransportLayer />}/>
+          <Route path='/profile' element={<UpdateForm />}/>
+        </Route>
+        <Route path='/' element={<LandingPage />}/>
+        <Route path='/register' element={<RegisterForm />}/>
+        <Route path='/login' element={<LoginForm />}/>
+        <Route path='/contact-us' element={<ContactUs />}/>
+        <Route path='/about-us' element={<AboutUs />}/>
+      </Routes>
+    </Router>
   );
 }
 
