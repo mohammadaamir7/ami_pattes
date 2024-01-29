@@ -13,6 +13,7 @@ import ContactUs from './screens/contactUs';
 import AboutUs from './screens/aboutUs';
 import ProtectedRoute from './modules/auth/protectedRoute';
 import AddOrderForm from './forms/addOrder';
+import ProductsPage from './screens/productsPage';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path='/profile' element={<UpdateForm />}/>
         </Route>
         <Route path='/' element={<LandingPage />}/>
+        <Route path='/products' element={<ProductsPage />}/>
         <Route path='/register' element={<RegisterForm />}/>
         <Route path='/login' element={<LoginForm />}/>
         <Route path='/contact-us' element={<ContactUs />}/>

@@ -82,6 +82,7 @@ const LandingPage = () => {
 
         <div className="container-fluid fixed-top">
           <div className="container px-0">
+
             <nav class="navbar navbar-light bg-white navbar-expand-xl bg-body-tertiary h-auto">
               <div class="container-fluid">
                 <button
@@ -93,60 +94,50 @@ const LandingPage = () => {
                   <span className="fa fa-bars icon-color"></span>
                 </button>
                 <button
-                  className="btn-search btn btn-md-square bg-white me-4"
+                  className="btn-search btn btn-md-square bg-white me-4 control-display"
                   data-bs-toggle="modal"
                   data-bs-target="#searchModal"
                 >
                   <i className="fas fa-search icon-color"></i>
                 </button>
-                <a href="index.html" className="navbar-brand mx-sm-auto mt-sm-3">
+                <a href="index.html" className="navbar-brand mt-sm-3">
                   <h1 className="logo-head">Ami Pattes</h1>
                   <p className="logo-para">
                     THE <span>Premium</span> PET TREATS
                   </p>
                   {/* <img src={logoImg} className="logo-size"/> */}
                 </a>
-                <button
-                  className="btn-search btn btn-md-square bg-white me-5"
-                  data-bs-toggle="modal"
-                  data-bs-target="#searchModal"
-                >
-                  <a
-                    href="index.html"
-                    className="nav-item nav-link active nav-link-color text-uppercase"
+                {/* <div className="d-flex"> */}
+                  <button
+                    className="btn-search btn btn-md-square bg-white"
+                    data-bs-toggle="modal"
+                    data-bs-target="#searchModal"
                   >
-                    Login
+                    <a
+                      href="index.html"
+                      className="nav-link nav-link-color text-uppercase"
+                    >
+                      Login
+                    </a>
+                  </button>
+                  <a href="#" className="position-relative ml-5 my-auto">
+                    <i className="fa fa-shopping-bag fa-2x icon-color"></i>
+                    <span
+                      className="position-absolute rounded-circle d-flex align-items-center justify-content-center text-light px-1"
+                      style={{
+                        top: "-5px",
+                        left: "15px",
+                        height: "20px",
+                        minWidth: "20px",
+                        backgroundColor: "#9A9A74",
+                      }}
+                    >
+                      3
+                    </span>
                   </a>
-                </button>
-                <a href="#" className="position-relative my-auto">
-                  <i className="fa fa-shopping-bag fa-2x icon-color"></i>
-                  <span
-                    className="position-absolute rounded-circle d-flex align-items-center justify-content-center text-light px-1"
-                    style={{
-                      top: "-5px",
-                      left: "15px",
-                      height: "20px",
-                      minWidth: "20px",
-                      backgroundColor: "#9A9A74",
-                    }}
-                  >
-                    3
-                  </span>
-                </a>
+                {/* </div> */}
 
                 {/* <span class="navbar-toggler-icon justify-content-end"></span> */}
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                  <ul class="navbar-nav mb-2 mb-lg-0 d-flex justify-content-end">
-                    <li class="nav-item">
-                      <a
-                        href="index.html"
-                        className="nav-item nav-link active nav-link-color"
-                      >
-                        Login
-                      </a>
-                    </li>
-                  </ul>
-                </div>
               </div>
                     
             </nav>
@@ -192,12 +183,12 @@ const LandingPage = () => {
 
         <div className="container-fluid py-5 mb-5 hero-header mt-5">
           <div className="container py-5">
-            <div className="row g-5 align-items-center mt-5">
+            <div className="row g-5 align-items-center mt-5"> 
               <div className="col-md-12 col-lg-7 d-flex align-items-center flex-column">
                 <h1 className="mb-5 display-3 text-light hero-heading">
                   NEW ARRIVALS
                 </h1>
-                <div className="position-relative mx-auto">
+                <div className="position-relative">
                   <button
                     type="submit"
                     className="btn btn-lg btn-outline-light text-uppercase btn-rounded-none btn-border-style w-100"
@@ -283,7 +274,9 @@ const LandingPage = () => {
               <h1 className="icon-color text-center review-title">
                 "MY DOG LOVES IT, SO NICE!"
               </h1>
-              <h4 className="icon-color text-center mb-5 reviewer-name">- ADA WU .</h4>
+              <h4 className="icon-color text-center mb-5 reviewer-name">
+                - ADA WU .
+              </h4>
             </div>
           </div>
         </div>

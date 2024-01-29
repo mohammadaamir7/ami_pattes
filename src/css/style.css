@@ -260,7 +260,7 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (min-width: 430px) and (max-width: 992px) {
   .hero-header,
   .page-header {
     /* margin-top: 97px !important; */
@@ -282,6 +282,18 @@
   .category-text {
     font-size: 21px !important;
   }
+  .control-display {
+    display: block !important;
+  }
+  .logo-head {
+    margin-left: 15%;
+  }
+  .logo-para {
+    margin-left: 25% !important;
+  }
+  .login-style {
+    margin-left: 0 !important;
+  }
 }
 
 @media (min-width: 993px) and (max-width: 1080px) {
@@ -293,6 +305,9 @@
   }
   .category-text {
     font-size: 18px !important;
+  }
+  .login-style {
+    margin-left: 0 !important;
   }
 }
 
@@ -308,6 +323,9 @@
     /* margin-right: 22% !important; */
     margin-left: -12% !important;
     font-size: 12px;
+  }
+  .login-style {
+    margin-left: 0 !important;
   }
 }
 /*** Hero Header end ***/
@@ -652,4 +670,19 @@
 .reviewer-name {
   font-family: Ayudisha;
   font-weight: lighter;
+}
+
+.control-display {
+  display: none !important;
+}
+
+.login-style {
+  margin-left: 330px !important;
+}
+.products-margin {
+  margin-top: 15%;
+}
+.tab-style{
+  color: #9a9a74;
+  font-weight: bold;
 }
