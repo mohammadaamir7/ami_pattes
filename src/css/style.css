@@ -252,82 +252,6 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-@media (min-width: 992px) {
-  .hero-header,
-  .page-header {
-    /* margin-top: 152px !important; */
-  }
-}
-
-@media (min-width: 430px) and (max-width: 992px) {
-  .hero-header,
-  .page-header {
-    /* margin-top: 97px !important; */
-  }
-  .crossover-header {
-    height: 50vh !important;
-  }
-  .hero-header {
-    height: 50vh !important;
-  }
-  .review-heading {
-    margin-left: 1% !important;
-    font-size: 20px;
-  }
-  .hits-heading {
-    margin-left: 1% !important;
-    font-size: 20px;
-  }
-  .category-text {
-    font-size: 21px !important;
-  }
-  .control-display {
-    display: block !important;
-  }
-  .logo-head {
-    margin-left: 15%;
-  }
-  .logo-para {
-    margin-left: 25% !important;
-  }
-  .login-style {
-    margin-left: 0 !important;
-  }
-}
-
-@media (min-width: 993px) and (max-width: 1080px) {
-  .review-heading {
-    margin-left: 10% !important;
-  }
-  .hits-heading {
-    margin-left: 10% !important;
-  }
-  .category-text {
-    font-size: 18px !important;
-  }
-  .login-style {
-    margin-left: 0 !important;
-  }
-}
-
-@media (max-width: 430px) {
-  .review-heading {
-    margin-top: 22% !important;
-    /* margin-right: 22% !important; */
-    margin-left: -12% !important;
-    font-size: 12px;
-  }
-  .hits-heading {
-    margin-top: 22% !important;
-    /* margin-right: 22% !important; */
-    margin-left: -12% !important;
-    font-size: 12px;
-  }
-  .login-style {
-    margin-left: 0 !important;
-  }
-}
 /*** Hero Header end ***/
 
 /*** featurs Start ***/
@@ -685,4 +609,85 @@
 .tab-style{
   color: #9a9a74;
   font-weight: bold;
+  display: block;
+  /* font-size: 5px; */
+}
+
+@media (min-width: 992px) {
+  .hero-header,
+  .page-header {
+    /* margin-top: 152px !important; */
+  }
+}
+
+@media (min-width: 430px) and (max-width: 992px) {
+  .hero-header,
+  .page-header {
+    /* margin-top: 97px !important; */
+  }
+  .crossover-header {
+    height: 50vh !important;
+  }
+  .hero-header {
+    height: 50vh !important;
+  }
+  .review-heading {
+    margin-left: 1% !important;
+    font-size: 20px;
+  }
+  .hits-heading {
+    margin-left: 1% !important;
+    font-size: 20px;
+  }
+  .category-text {
+    font-size: 21px !important;
+  }
+  .control-display {
+    display: block !important;
+  }
+  .logo-head {
+    margin-left: 15%;
+  }
+  .logo-para {
+    margin-left: 25% !important;
+  }
+  .login-style {
+    margin-left: 0 !important;
+  }
+  .products-margin {
+    margin-top: 45%;
+  }
+}
+
+@media (min-width: 993px) and (max-width: 1080px) {
+  .review-heading {
+    margin-left: 10% !important;
+  }
+  .hits-heading {
+    margin-left: 10% !important;
+  }
+  .category-text {
+    font-size: 18px !important;
+  }
+  .login-style {
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .review-heading {
+    margin-top: 22% !important;
+    /* margin-right: 22% !important; */
+    margin-left: -12% !important;
+    font-size: 12px;
+  }
+  .hits-heading {
+    margin-top: 22% !important;
+    /* margin-right: 22% !important; */
+    margin-left: -12% !important;
+    font-size: 12px;
+  }
+  .login-style {
+    margin-left: 0 !important;
+  }
 }

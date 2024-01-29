@@ -14,6 +14,7 @@ import dogImg from "../img/shutterstock_1969088419.jpg";
 import bootleImg from "../img/c16a3d9e712761b8ea287dac578e7434.jpg";
 import instaImg from "../img/instagram.png";
 import fbImg from "../img/facebook.png";
+import { useEffect, useState } from "react";
 
 const ProductsPage = () => {
   const productsTabStates = {
@@ -22,11 +23,24 @@ const ProductsPage = () => {
     bundled: false,
     suppliments: false,
   };
+  const [tabStates, setTabStates] = useState(productsTabStates);
   const navigate = useNavigate();
 
-  const handleTabChange = (e) => {
-    console.log('event : ', e)
-  }
+  useEffect(() => {}, [tabStates]);
+
+  const handleTabChange = (activeTab) => {
+    console.log("tab : ", activeTab);
+    setTabStates((prevState) => {
+      const newState = { ...prevState };
+      for (const tab in newState) {
+        newState[tab] = false;
+      }
+      newState[activeTab] = true;
+      console.log("newState : ", newState);
+
+      return newState;
+    });
+  };
 
   return (
     <>
@@ -89,6 +103,69 @@ const ProductsPage = () => {
 
               {/* <span class="navbar-toggler-icon justify-content-end"></span> */}
             </div>
+            {/* <div className="col-lg-4 text-start">
+                  <h1>Products</h1>
+                </div> */}
+            <div className="col-lg-12 text-lg-end text-sm-center ml-5">
+              <ul className="nav d-inline-flex text-center mb-5">
+                <li className="nav-item">
+                  <a
+                    className="d-flex m-2 py-2 active"
+                    data-bs-toggle="pill"
+                    onClick={() => handleTabChange("freezed")}
+                  >
+                    <span
+                      className="text-uppercase icon-color tab-style text-uppercase"
+                      style={{ width: "130px" }}
+                    >
+                      Premium freeze-dired meat
+                    </span>
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    className="d-flex py-2 m-2"
+                    data-bs-toggle="pill"
+                    onClick={() => handleTabChange("homeMade")}
+                  >
+                    <span
+                      className="tab-style text-uppercase"
+                      style={{ width: "130px" }}
+                    >
+                      Home made style treats
+                    </span>
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    className="d-flex m-2 py-2"
+                    data-bs-toggle="pill"
+                    onClick={() => handleTabChange("bundled")}
+                  >
+                    <span
+                      className="tab-style text-uppercase"
+                      style={{ width: "130px" }}
+                    >
+                      Bundled gift box
+                    </span>
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    className="d-flex m-2 py-2"
+                    data-bs-toggle="pill"
+                    onClick={() => handleTabChange("suppliments")}
+                  >
+                    <span
+                      className="tab-style text-uppercase"
+                      style={{ width: "130px" }}
+                    >
+                      Pet Suppliments
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
                   
           </nav>
         </div>
@@ -100,352 +177,238 @@ const ProductsPage = () => {
         >
           <div className="container py-5 products-margin">
             <div className="tab-className text-center">
-              <div className="row g-4">
-                <div className="col-lg-4 text-start">
-                  <h1>Products</h1>
-                </div>
-                <div className="col-lg-8 text-lg-end text-sm-center">
-                  <ul className="nav nav-pills d-inline-flex text-center mb-5">
-                    <li className="nav-item">
-                      <a
-                        className="d-flex m-2 py-2 active"
-                        data-bs-toggle="pill"
-                        name="freezed"
-                        onClick={e => handleTabChange(e)}
-                      >
-                        <span
-                          className="text-uppercase icon-color tab-style text-uppercase"
-                          style={{ width: "130px" }}
-                        >
-                          Premium freeze-dired meat
-                        </span>
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a
-                        className="d-flex py-2 m-2"
-                        data-bs-toggle="pill"
-                        href="#tab-2"
-                      >
-                        <span className="tab-style text-uppercase" style={{ width: "130px" }}>
-                          Home made style treats
-                        </span>
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a
-                        className="d-flex m-2 py-2"
-                        data-bs-toggle="pill"
-                        href="#tab-3"
-                      >
-                        <span className="tab-style text-uppercase" style={{ width: "130px" }}>
-                          Bundled gift box
-                        </span>
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a
-                        className="d-flex m-2 py-2"
-                        data-bs-toggle="pill"
-                        href="#tab-4"
-                      >
-                        <span className="tab-style text-uppercase" style={{ width: "130px" }}>
-                          Pet Suppliments
-                        </span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
               <div className="tab-content">
-                {productsTabStates.freezed && <div id="tab-1" className="tab-pane fade show p-0 active">
-                  <div className="row g-4">
-                    <div className="col-lg-12">
-                      <div className="row g-4">
-                        <div className="col-md-6 col-lg-4 col-xl-3">
-                          <div className="position-relative fruite-item">
-                            <div className="fruite-img">
-                              <img
-                                src={productImg}
-                                className="img-fluid w-100"
-                                alt=""
-                              />
-                            </div>
-                            <div className="p-4 rounded-bottom">
-                              <h4 className="icon-color text-uppercase">
-                                Lamb
-                              </h4>
-                              <div className="d-flex justify-content-between flex-lg-wrap">
-                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                  $45
-                                </p>
-                                <a
-                                  href="#"
-                                  className="btn border px-3 icon-color"
-                                >
-                                  <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                  Add to cart
-                                </a>
+                {tabStates.freezed && (
+                  <div
+                    id="tab-1"
+                    className={`tab-pane fade show p-0 + ${
+                      tabStates.freezed ? "active" : ""
+                    }`}
+                  >
+                    <div className="row g-4">
+                      <div className="col-lg-12">
+                        <div className="row g-4">
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Lamb
+                                </h4>
+                                <div className="d-flex justify-content-between flex-lg-wrap">
+                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                    $45
+                                  </p>
+                                  <a
+                                    href="#"
+                                    className="btn border px-3 icon-color"
+                                  >
+                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
+                                    Add to cart
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4 col-xl-3">
-                          <div className="position-relative fruite-item">
-                            <div className="fruite-img">
-                              <img
-                                src={productImg}
-                                className="img-fluid w-100"
-                                alt=""
-                              />
-                            </div>
-                            <div className="p-4 rounded-bottom">
-                              <h4 className="icon-color text-uppercase">
-                                Lamb
-                              </h4>
-                              <div className="d-flex justify-content-between flex-lg-wrap">
-                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                  $45
-                                </p>
-                                <a
-                                  href="#"
-                                  className="btn border icon-color px-3"
-                                >
-                                  <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                  Add to cart
-                                </a>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Lamb
+                                </h4>
+                                <div className="d-flex justify-content-between flex-lg-wrap">
+                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                    $45
+                                  </p>
+                                  <a
+                                    href="#"
+                                    className="btn border icon-color px-3"
+                                  >
+                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
+                                    Add to cart
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4 col-xl-3">
-                          <div className="position-relative fruite-item">
-                            <div className="fruite-img">
-                              <img
-                                src={productImg}
-                                className="img-fluid w-100"
-                                alt=""
-                              />
-                            </div>
-                            <div className="p-4 rounded-bottom">
-                              <h4 className="icon-color text-uppercase">
-                                Lamb
-                              </h4>
-                              <div className="d-flex justify-content-between flex-lg-wrap">
-                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                  $45
-                                </p>
-                                <a
-                                  href="#"
-                                  className="btn border icon-color px-3"
-                                >
-                                  <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                  Add to cart
-                                </a>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Lamb
+                                </h4>
+                                <div className="d-flex justify-content-between flex-lg-wrap">
+                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                    $45
+                                  </p>
+                                  <a
+                                    href="#"
+                                    className="btn border icon-color px-3"
+                                  >
+                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
+                                    Add to cart
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4 col-xl-3">
-                          <div className="position-relative fruite-item">
-                            <div className="fruite-img">
-                              <img
-                                src={productImg}
-                                className="img-fluid w-100"
-                                alt=""
-                              />
-                            </div>
-                            <div className="p-4 rounded-bottom">
-                              <h4 className="icon-color text-uppercase">
-                                Lamb
-                              </h4>
-                              <div className="d-flex justify-content-between flex-lg-wrap">
-                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                  $45
-                                </p>
-                                <a
-                                  href="#"
-                                  className="btn border icon-color px-3"
-                                >
-                                  <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                  Add to cart
-                                </a>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Lamb
+                                </h4>
+                                <div className="d-flex justify-content-between flex-lg-wrap">
+                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                    $45
+                                  </p>
+                                  <a
+                                    href="#"
+                                    className="btn border icon-color px-3"
+                                  >
+                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
+                                    Add to cart
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4 col-xl-3">
-                          <div className="position-relative fruite-item">
-                            <div className="fruite-img">
-                              <img
-                                src={productImg}
-                                className="img-fluid w-100"
-                                alt=""
-                              />
-                            </div>
-                            <div className="p-4 rounded-bottom">
-                              <h4 className="icon-color text-uppercase">
-                                Lamb
-                              </h4>
-                              <div className="d-flex justify-content-between flex-lg-wrap">
-                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                  $45
-                                </p>
-                                <a
-                                  href="#"
-                                  className="btn border icon-color px-3"
-                                >
-                                  <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                  Add to cart
-                                </a>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Lamb
+                                </h4>
+                                <div className="d-flex justify-content-between flex-lg-wrap">
+                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                    $45
+                                  </p>
+                                  <a
+                                    href="#"
+                                    className="btn border icon-color px-3"
+                                  >
+                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
+                                    Add to cart
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4 col-xl-3">
-                          <div className="position-relative fruite-item">
-                            <div className="fruite-img">
-                              <img
-                                src={productImg}
-                                className="img-fluid w-100"
-                                alt=""
-                              />
-                            </div>
-                            <div className="p-4 rounded-bottom">
-                              <h4 className="icon-color text-uppercase">
-                                Lamb
-                              </h4>
-                              <div className="d-flex justify-content-between flex-lg-wrap">
-                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                  $45
-                                </p>
-                                <a
-                                  href="#"
-                                  className="btn border icon-color px-3"
-                                >
-                                  <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                  Add to cart
-                                </a>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Lamb
+                                </h4>
+                                <div className="d-flex justify-content-between flex-lg-wrap">
+                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                    $45
+                                  </p>
+                                  <a
+                                    href="#"
+                                    className="btn border icon-color px-3"
+                                  >
+                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
+                                    Add to cart
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4 col-xl-3">
-                          <div className="position-relative fruite-item">
-                            <div className="fruite-img">
-                              <img
-                                src={productImg}
-                                className="img-fluid w-100"
-                                alt=""
-                              />
-                            </div>
-                            <div className="p-4 rounded-bottom">
-                              <h4 className="icon-color text-uppercase">
-                                Lamb
-                              </h4>
-                              <div className="d-flex justify-content-between flex-lg-wrap">
-                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                  $45
-                                </p>
-                                <a
-                                  href="#"
-                                  className="btn border icon-color px-3"
-                                >
-                                  <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                  Add to cart
-                                </a>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Lamb
+                                </h4>
+                                <div className="d-flex justify-content-between flex-lg-wrap">
+                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                    $45
+                                  </p>
+                                  <a
+                                    href="#"
+                                    className="btn border icon-color px-3"
+                                  >
+                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
+                                    Add to cart
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4 col-xl-3">
-                          <div className="position-relative fruite-item">
-                            <div className="fruite-img">
-                              <img
-                                src={productImg}
-                                className="img-fluid w-100"
-                                alt=""
-                              />
-                            </div>
-                            <div className="p-4 rounded-bottom">
-                              <h4 className="icon-color text-uppercase">
-                                Lamb
-                              </h4>
-                              <div className="d-flex justify-content-between flex-lg-wrap">
-                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                  $45
-                                </p>
-                                <a
-                                  href="#"
-                                  className="btn border icon-color px-3"
-                                >
-                                  <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                  Add to cart
-                                </a>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
                               </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>}
-                <div id="tab-2" className="tab-pane fade show p-0">
-                  <div className="row g-4">
-                    <div className="col-lg-12">
-                      <div className="row g-4">
-                        <div className="col-md-6 col-lg-4 col-xl-3">
-                          <div className="position-relative fruite-item">
-                            <div className="fruite-img">
-                              <img
-                                src={productImg}
-                                className="img-fluid w-100"
-                                alt=""
-                              />
-                            </div>
-                            <div className="p-4 rounded-bottom">
-                              <h4 className="icon-color text-uppercase">
-                                Lamb
-                              </h4>
-                              <div className="d-flex justify-content-between flex-lg-wrap">
-                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                  $45
-                                </p>
-                                <a
-                                  href="#"
-                                  className="btn border icon-color px-3"
-                                >
-                                  <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                  Add to cart
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4 col-xl-3">
-                          <div className="position-relative fruite-item">
-                            <div className="fruite-img">
-                              <img
-                                src={productImg}
-                                className="img-fluid w-100"
-                                alt=""
-                              />
-                            </div>
-                            <div className="p-4 rounded-bottom">
-                              <h4 className="icon-color text-uppercase">
-                                Lamb
-                              </h4>
-                              <div className="d-flex justify-content-between flex-lg-wrap">
-                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                  $45
-                                </p>
-                                <a
-                                  href="#"
-                                  className="btn border icon-color px-3"
-                                >
-                                  <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                  Add to cart
-                                </a>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Lamb
+                                </h4>
+                                <div className="d-flex justify-content-between flex-lg-wrap">
+                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                    $45
+                                  </p>
+                                  <a
+                                    href="#"
+                                    className="btn border icon-color px-3"
+                                  >
+                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
+                                    Add to cart
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -453,127 +416,70 @@ const ProductsPage = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-                <div id="tab-3" className="tab-pane fade show p-0">
-                  <div className="row g-4">
-                    <div className="col-lg-12">
-                      <div className="row g-4">
-                        <div className="col-md-6 col-lg-4 col-xl-3">
-                          <div className="position-relative fruite-item">
-                            <div className="fruite-img">
-                              <img
-                                src={productImg}
-                                className="img-fluid w-100"
-                                alt=""
-                              />
-                            </div>
-                            <div className="p-4 rounded-bottom">
-                              <h4 className="icon-color text-uppercase">
-                                Lamb
-                              </h4>
-                              <div className="d-flex justify-content-between flex-lg-wrap">
-                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                  $45
-                                </p>
-                                <a
-                                  href="#"
-                                  className="btn border icon-color px-3"
-                                >
-                                  <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                  Add to cart
-                                </a>
+                )}
+                {tabStates.homeMade && (
+                  <div
+                    id="tab-2"
+                    className={`tab-pane fade show p-0 + ${
+                      tabStates.homeMade ? "active" : ""
+                    }`}
+                  >
+                    <div className="row g-4">
+                      <div className="col-lg-12">
+                        <div className="row g-4">
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Home Made
+                                </h4>
+                                <div className="d-flex justify-content-between flex-lg-wrap">
+                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                    $45
+                                  </p>
+                                  <a
+                                    href="#"
+                                    className="btn border icon-color px-3"
+                                  >
+                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
+                                    Add to cart
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4 col-xl-3">
-                          <div className="position-relative fruite-item">
-                            <div className="fruite-img">
-                              <img
-                                src={productImg}
-                                className="img-fluid w-100"
-                                alt=""
-                              />
-                            </div>
-                            <div className="p-4 rounded-bottom">
-                              <h4 className="icon-color text-uppercase">
-                                Lamb
-                              </h4>
-                              <div className="d-flex justify-content-between flex-lg-wrap">
-                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                  $45
-                                </p>
-                                <a
-                                  href="#"
-                                  className="btn border icon-color px-3"
-                                >
-                                  <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                  Add to cart
-                                </a>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
                               </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="tab-4" className="tab-pane fade show p-0">
-                  <div className="row g-4">
-                    <div className="col-lg-12">
-                      <div className="row g-4">
-                        <div className="col-md-6 col-lg-4 col-xl-3">
-                          <div className="position-relative fruite-item">
-                            <div className="fruite-img">
-                              <img
-                                src={productImg}
-                                className="img-fluid w-100"
-                                alt=""
-                              />
-                            </div>
-                            <div className="p-4 rounded-bottom">
-                              <h4 className="icon-color text-uppercase">
-                                Lamb
-                              </h4>
-                              <div className="d-flex justify-content-between flex-lg-wrap">
-                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                  $45
-                                </p>
-                                <a
-                                  href="#"
-                                  className="btn border icon-color px-3"
-                                >
-                                  <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                  Add to cart
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4 col-xl-3">
-                          <div className="position-relative fruite-item">
-                            <div className="fruite-img">
-                              <img
-                                src={productImg}
-                                className="img-fluid w-100"
-                                alt=""
-                              />
-                            </div>
-                            <div className="p-4 rounded-bottom">
-                              <h4 className="icon-color text-uppercase">
-                                Lamb
-                              </h4>
-                              <div className="d-flex justify-content-between flex-lg-wrap">
-                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                  $45
-                                </p>
-                                <a
-                                  href="#"
-                                  className="btn border icon-color px-3"
-                                >
-                                  <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                  Add to cart
-                                </a>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Home Made
+                                </h4>
+                                <div className="d-flex justify-content-between flex-lg-wrap">
+                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                    $45
+                                  </p>
+                                  <a
+                                    href="#"
+                                    className="btn border icon-color px-3"
+                                  >
+                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
+                                    Add to cart
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -581,91 +487,70 @@ const ProductsPage = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-                <div id="tab-5" className="tab-pane fade show p-0">
-                  <div className="row g-4">
-                    <div className="col-lg-12">
-                      <div className="row g-4">
-                        <div className="col-md-6 col-lg-4 col-xl-3">
-                          <div className="position-relative fruite-item">
-                            <div className="fruite-img">
-                              <img
-                                src={productImg}
-                                className="img-fluid w-100"
-                                alt=""
-                              />
-                            </div>
-                            <div className="p-4 rounded-bottom">
-                              <h4 className="icon-color text-uppercase">
-                                Lamb
-                              </h4>
-                              <div className="d-flex justify-content-between flex-lg-wrap">
-                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                  $45
-                                </p>
-                                <a
-                                  href="#"
-                                  className="btn border icon-color px-3"
-                                >
-                                  <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                  Add to cart
-                                </a>
+                )}
+                {tabStates.bundled && (
+                  <div
+                    id="tab-3"
+                    className={`tab-pane fade show p-0 + ${
+                      tabStates.bundled ? "active" : ""
+                    }`}
+                  >
+                    <div className="row g-4">
+                      <div className="col-lg-12">
+                        <div className="row g-4">
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Bundled
+                                </h4>
+                                <div className="d-flex justify-content-between flex-lg-wrap">
+                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                    $45
+                                  </p>
+                                  <a
+                                    href="#"
+                                    className="btn border icon-color px-3"
+                                  >
+                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
+                                    Add to cart
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4 col-xl-3">
-                          <div className="position-relative fruite-item">
-                            <div className="fruite-img">
-                              <img
-                                src={productImg}
-                                className="img-fluid w-100"
-                                alt=""
-                              />
-                            </div>
-                            <div className="p-4 rounded-bottom">
-                              <h4 className="icon-color text-uppercase">
-                                Lamb
-                              </h4>
-                              <div className="d-flex justify-content-between flex-lg-wrap">
-                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                  $45
-                                </p>
-                                <a
-                                  href="#"
-                                  className="btn border icon-color px-3"
-                                >
-                                  <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                  Add to cart
-                                </a>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
                               </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4 col-xl-3">
-                          <div className="position-relative fruite-item">
-                            <div className="fruite-img">
-                              <img
-                                src={productImg}
-                                className="img-fluid w-100"
-                                alt=""
-                              />
-                            </div>
-                            <div className="p-4 rounded-bottom">
-                              <h4 className="icon-color text-uppercase">
-                                Lamb
-                              </h4>
-                              <div className="d-flex justify-content-between flex-lg-wrap">
-                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                  $45
-                                </p>
-                                <a
-                                  href="#"
-                                  className="btn border icon-color px-3"
-                                >
-                                  <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                  Add to cart
-                                </a>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Bundled
+                                </h4>
+                                <div className="d-flex justify-content-between flex-lg-wrap">
+                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                    $45
+                                  </p>
+                                  <a
+                                    href="#"
+                                    className="btn border icon-color px-3"
+                                  >
+                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
+                                    Add to cart
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -673,7 +558,78 @@ const ProductsPage = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                )}
+                {tabStates.suppliments && (
+                  <div
+                    id="tab-4"
+                    className={`tab-pane fade show p-0 + ${
+                      tabStates.suppliments ? "active" : ""
+                    }`}
+                  >
+                    <div className="row g-4">
+                      <div className="col-lg-12">
+                        <div className="row g-4">
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Suppliments
+                                </h4>
+                                <div className="d-flex justify-content-between flex-lg-wrap">
+                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                    $45
+                                  </p>
+                                  <a
+                                    href="#"
+                                    className="btn border icon-color px-3"
+                                  >
+                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
+                                    Add to cart
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Suppliments
+                                </h4>
+                                <div className="d-flex justify-content-between flex-lg-wrap">
+                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                    $45
+                                  </p>
+                                  <a
+                                    href="#"
+                                    className="btn border icon-color px-3"
+                                  >
+                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
+                                    Add to cart
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
