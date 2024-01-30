@@ -1,74 +1,11 @@
-import { Image, Container, Row, Col } from "react-bootstrap";
-import dpi from "../images/dpi-cropped.jpeg";
-import hec from "../images/hec-logo.jpeg";
-import nccs from "../images/nccs.jpeg";
-import Navbar from "../components/navbar";
-import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-// import "../lib/owlcarousel/assets/owl.carousel.css"
-// import "../lib/owlcarousel/assets/owl.carousel.css"
-import "../css/style.css";
-import "../css/bootstrap.min.css";
 import productImg from "../img/shutterstock_653239414.jpg";
 import dogImg from "../img/shutterstock_1969088419.jpg";
 import bootleImg from "../img/c16a3d9e712761b8ea287dac578e7434.jpg";
 import instaImg from "../img/instagram.png";
 import fbImg from "../img/facebook.png";
-import logoImg from "../img/Logo_Ami Pattes_final_Green.png";
-import { useEffect } from "react";
-import Script from "react-load-script";
-import { Helmet } from "react-helmet";
 const LandingPage = () => {
   const navigate = useNavigate();
-  //   useEffect(() => {
-  //     // Load jQuery
-  //     const loadScript = (src, callback) => {
-  //         const script = document.createElement('script');
-  //         script.src = src;
-  //         script.onload = callback;
-  //         document.head.appendChild(script);
-  //       };
-
-  //       // Load jQuery
-  //       loadScript('https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js', () => {
-  //         // jQuery has been loaded, you can perform actions after loading
-  //       });
-
-  //       // Load Bootstrap
-  //       loadScript('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js', () => {
-  //         // Bootstrap has been loaded, you can perform actions after loading
-  //       });
-
-  //       // Load other scripts
-  //       const scriptUrls = [
-  //         '../lib/easing/easing.min.js',
-  //         '../lib/waypoints/waypoints.min.js',
-  //         '../lib/lightbox/js/lightbox.min.js',
-  //         '../lib/owlcarousel/owl.carousel.min.js',
-  //         'js/main.js',
-  //       ];
-
-  //       scriptUrls.forEach((url) => {
-  //         loadScript(url, () => {
-  //           // Individual script has been loaded, you can perform actions after loading
-  //         });
-  //       });
-
-  //       return () => {
-  //         // Clean up on component unmount
-  //         // Remove the dynamically added script tags
-  //         document.head.removeChild(document.querySelector('script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"]'));
-  //         document.head.removeChild(document.querySelector('script[src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"]'));
-  //         scriptUrls.forEach((url) => {
-  //           const scriptElement = document.querySelector(`script[src="${url}"]`);
-  //           if (scriptElement) {
-  //             document.head.removeChild(scriptElement);
-  //           }
-  //         });
-  //       };
-  //   }, []);
   return (
     <>
       {/* <Navbar /> */}

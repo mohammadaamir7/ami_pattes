@@ -1,20 +1,8 @@
-import { Image, Container, Row, Col } from "react-bootstrap";
-import dpi from "../images/dpi-cropped.jpeg";
-import hec from "../images/hec-logo.jpeg";
-import nccs from "../images/nccs.jpeg";
-import Navbar from "../components/navbar";
-import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../css/style.css";
-import "../css/bootstrap.min.css";
 import productImg from "../img/shutterstock_653239414.jpg";
-import dogImg from "../img/shutterstock_1969088419.jpg";
-import bootleImg from "../img/c16a3d9e712761b8ea287dac578e7434.jpg";
 import instaImg from "../img/instagram.png";
 import fbImg from "../img/facebook.png";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const ProductsPage = () => {
   const productsTabStates = {
@@ -26,10 +14,7 @@ const ProductsPage = () => {
   const [tabStates, setTabStates] = useState(productsTabStates);
   const navigate = useNavigate();
 
-  useEffect(() => {}, [tabStates]);
-
   const handleTabChange = (activeTab) => {
-    console.log("tab : ", activeTab);
     setTabStates((prevState) => {
       const newState = { ...prevState };
       for (const tab in newState) {
@@ -46,11 +31,11 @@ const ProductsPage = () => {
     <>
       {/* <Navbar /> */}
       <div className="container-fluid fixed-top">
-        <div className="container px-0">
+        <div className="container-fluid px-0">
           <nav class="navbar navbar-light bg-white navbar-expand-xl bg-body-tertiary h-auto">
             <div class="container-fluid">
               <button
-                className="navbar-toggler py-2 px-3 border-0"
+                className="navbar-toggler border-0"
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#navbarCollapse"
@@ -58,7 +43,7 @@ const ProductsPage = () => {
                 <span className="fa fa-bars icon-color"></span>
               </button>
               <button
-                className="btn-search btn btn-md-square bg-white me-4 control-display"
+                className="btn-search btn btn-md-square bg-white nav-margin control-display"
                 data-bs-toggle="modal"
                 data-bs-target="#searchModal"
               >
@@ -106,7 +91,7 @@ const ProductsPage = () => {
             {/* <div className="col-lg-4 text-start">
                   <h1>Products</h1>
                 </div> */}
-            <div className="col-lg-12 text-lg-end text-sm-center ml-5">
+            <div className="col-lg-12 text-lg-end text-sm-center ml-5 control-display products-tab">
               <ul className="nav d-inline-flex text-center mb-5">
                 <li className="nav-item">
                   <a
@@ -115,7 +100,9 @@ const ProductsPage = () => {
                     onClick={() => handleTabChange("freezed")}
                   >
                     <span
-                      className="text-uppercase icon-color tab-style text-uppercase"
+                      className={`text-uppercase tab-style text-uppercase + ${
+                        tabStates.freezed ? "active-product-tab" : ""
+                      }`}
                       style={{ width: "130px" }}
                     >
                       Premium freeze-dired meat
@@ -129,7 +116,9 @@ const ProductsPage = () => {
                     onClick={() => handleTabChange("homeMade")}
                   >
                     <span
-                      className="tab-style text-uppercase"
+                      className={`text-uppercase tab-style text-uppercase + ${
+                        tabStates.homeMade ? "active-product-tab" : ""
+                      }`}
                       style={{ width: "130px" }}
                     >
                       Home made style treats
@@ -143,7 +132,9 @@ const ProductsPage = () => {
                     onClick={() => handleTabChange("bundled")}
                   >
                     <span
-                      className="tab-style text-uppercase"
+                      className={`text-uppercase tab-style text-uppercase + ${
+                        tabStates.bundled ? "active-product-tab" : ""
+                      }`}
                       style={{ width: "130px" }}
                     >
                       Bundled gift box
@@ -157,7 +148,9 @@ const ProductsPage = () => {
                     onClick={() => handleTabChange("suppliments")}
                   >
                     <span
-                      className="tab-style text-uppercase"
+                      className={`text-uppercase tab-style text-uppercase + ${
+                        tabStates.suppliments ? "active-product-tab" : ""
+                      }`}
                       style={{ width: "130px" }}
                     >
                       Pet Suppliments
@@ -170,11 +163,72 @@ const ProductsPage = () => {
           </nav>
         </div>
       </div>
+
       <div>
         <div
           className="container-fluid fruite py-5 mt-5"
           style={{ backgroundColor: "#e8e7e6" }}
         >
+          <div className="col-lg-12 text-lg-end text-sm-center ml-5">
+            <ul className="nav d-inline-flex text-center">
+              <li className="nav-item">
+                <a
+                  className="d-flex m-2 py-2 active"
+                  data-bs-toggle="pill"
+                  onClick={() => handleTabChange("freezed")}
+                >
+                  <span
+                    className="text-uppercase icon-color tab-style text-uppercase"
+                    style={{ width: "130px" }}
+                  >
+                    Premium freeze-dired meat
+                  </span>
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="d-flex py-2 m-2"
+                  data-bs-toggle="pill"
+                  onClick={() => handleTabChange("homeMade")}
+                >
+                  <span
+                    className="tab-style text-uppercase"
+                    style={{ width: "130px" }}
+                  >
+                    Home made style treats
+                  </span>
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="d-flex m-2 py-2"
+                  data-bs-toggle="pill"
+                  onClick={() => handleTabChange("bundled")}
+                >
+                  <span
+                    className="tab-style text-uppercase"
+                    style={{ width: "130px" }}
+                  >
+                    Bundled gift box
+                  </span>
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="d-flex m-2 py-2"
+                  data-bs-toggle="pill"
+                  onClick={() => handleTabChange("suppliments")}
+                >
+                  <span
+                    className="tab-style text-uppercase"
+                    style={{ width: "130px" }}
+                  >
+                    Pet Suppliments
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
           <div className="container py-5 products-margin">
             <div className="tab-className text-center">
               <div className="tab-content">
@@ -201,18 +255,9 @@ const ProductsPage = () => {
                                 <h4 className="icon-color text-uppercase">
                                   Lamb
                                 </h4>
-                                <div className="d-flex justify-content-between flex-lg-wrap">
-                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                    $45
-                                  </p>
-                                  <a
-                                    href="#"
-                                    className="btn border px-3 icon-color"
-                                  >
-                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                    Add to cart
-                                  </a>
-                                </div>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
                               </div>
                             </div>
                           </div>
@@ -229,18 +274,9 @@ const ProductsPage = () => {
                                 <h4 className="icon-color text-uppercase">
                                   Lamb
                                 </h4>
-                                <div className="d-flex justify-content-between flex-lg-wrap">
-                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                    $45
-                                  </p>
-                                  <a
-                                    href="#"
-                                    className="btn border icon-color px-3"
-                                  >
-                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                    Add to cart
-                                  </a>
-                                </div>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
                               </div>
                             </div>
                           </div>
@@ -257,18 +293,9 @@ const ProductsPage = () => {
                                 <h4 className="icon-color text-uppercase">
                                   Lamb
                                 </h4>
-                                <div className="d-flex justify-content-between flex-lg-wrap">
-                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                    $45
-                                  </p>
-                                  <a
-                                    href="#"
-                                    className="btn border icon-color px-3"
-                                  >
-                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                    Add to cart
-                                  </a>
-                                </div>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
                               </div>
                             </div>
                           </div>
@@ -285,18 +312,9 @@ const ProductsPage = () => {
                                 <h4 className="icon-color text-uppercase">
                                   Lamb
                                 </h4>
-                                <div className="d-flex justify-content-between flex-lg-wrap">
-                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                    $45
-                                  </p>
-                                  <a
-                                    href="#"
-                                    className="btn border icon-color px-3"
-                                  >
-                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                    Add to cart
-                                  </a>
-                                </div>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
                               </div>
                             </div>
                           </div>
@@ -313,18 +331,9 @@ const ProductsPage = () => {
                                 <h4 className="icon-color text-uppercase">
                                   Lamb
                                 </h4>
-                                <div className="d-flex justify-content-between flex-lg-wrap">
-                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                    $45
-                                  </p>
-                                  <a
-                                    href="#"
-                                    className="btn border icon-color px-3"
-                                  >
-                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                    Add to cart
-                                  </a>
-                                </div>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
                               </div>
                             </div>
                           </div>
@@ -341,18 +350,9 @@ const ProductsPage = () => {
                                 <h4 className="icon-color text-uppercase">
                                   Lamb
                                 </h4>
-                                <div className="d-flex justify-content-between flex-lg-wrap">
-                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                    $45
-                                  </p>
-                                  <a
-                                    href="#"
-                                    className="btn border icon-color px-3"
-                                  >
-                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                    Add to cart
-                                  </a>
-                                </div>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
                               </div>
                             </div>
                           </div>
@@ -369,18 +369,9 @@ const ProductsPage = () => {
                                 <h4 className="icon-color text-uppercase">
                                   Lamb
                                 </h4>
-                                <div className="d-flex justify-content-between flex-lg-wrap">
-                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                    $45
-                                  </p>
-                                  <a
-                                    href="#"
-                                    className="btn border icon-color px-3"
-                                  >
-                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                    Add to cart
-                                  </a>
-                                </div>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
                               </div>
                             </div>
                           </div>
@@ -397,18 +388,9 @@ const ProductsPage = () => {
                                 <h4 className="icon-color text-uppercase">
                                   Lamb
                                 </h4>
-                                <div className="d-flex justify-content-between flex-lg-wrap">
-                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                    $45
-                                  </p>
-                                  <a
-                                    href="#"
-                                    className="btn border icon-color px-3"
-                                  >
-                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                    Add to cart
-                                  </a>
-                                </div>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
                               </div>
                             </div>
                           </div>
@@ -440,18 +422,9 @@ const ProductsPage = () => {
                                 <h4 className="icon-color text-uppercase">
                                   Home Made
                                 </h4>
-                                <div className="d-flex justify-content-between flex-lg-wrap">
-                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                    $45
-                                  </p>
-                                  <a
-                                    href="#"
-                                    className="btn border icon-color px-3"
-                                  >
-                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                    Add to cart
-                                  </a>
-                                </div>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
                               </div>
                             </div>
                           </div>
@@ -468,18 +441,9 @@ const ProductsPage = () => {
                                 <h4 className="icon-color text-uppercase">
                                   Home Made
                                 </h4>
-                                <div className="d-flex justify-content-between flex-lg-wrap">
-                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                    $45
-                                  </p>
-                                  <a
-                                    href="#"
-                                    className="btn border icon-color px-3"
-                                  >
-                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                    Add to cart
-                                  </a>
-                                </div>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
                               </div>
                             </div>
                           </div>
@@ -511,18 +475,9 @@ const ProductsPage = () => {
                                 <h4 className="icon-color text-uppercase">
                                   Bundled
                                 </h4>
-                                <div className="d-flex justify-content-between flex-lg-wrap">
-                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                    $45
-                                  </p>
-                                  <a
-                                    href="#"
-                                    className="btn border icon-color px-3"
-                                  >
-                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                    Add to cart
-                                  </a>
-                                </div>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
                               </div>
                             </div>
                           </div>
@@ -539,18 +494,9 @@ const ProductsPage = () => {
                                 <h4 className="icon-color text-uppercase">
                                   Bundled
                                 </h4>
-                                <div className="d-flex justify-content-between flex-lg-wrap">
-                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                    $45
-                                  </p>
-                                  <a
-                                    href="#"
-                                    className="btn border icon-color px-3"
-                                  >
-                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                    Add to cart
-                                  </a>
-                                </div>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
                               </div>
                             </div>
                           </div>
@@ -582,18 +528,9 @@ const ProductsPage = () => {
                                 <h4 className="icon-color text-uppercase">
                                   Suppliments
                                 </h4>
-                                <div className="d-flex justify-content-between flex-lg-wrap">
-                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                    $45
-                                  </p>
-                                  <a
-                                    href="#"
-                                    className="btn border icon-color px-3"
-                                  >
-                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                    Add to cart
-                                  </a>
-                                </div>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
                               </div>
                             </div>
                           </div>
@@ -610,18 +547,9 @@ const ProductsPage = () => {
                                 <h4 className="icon-color text-uppercase">
                                   Suppliments
                                 </h4>
-                                <div className="d-flex justify-content-between flex-lg-wrap">
-                                  <p className="fs-5 fw-bold mb-0 icon-color price-style">
-                                    $45
-                                  </p>
-                                  <a
-                                    href="#"
-                                    className="btn border icon-color px-3"
-                                  >
-                                    <i className="fa fa-shopping-bag me-2 icon-color"></i>{" "}
-                                    Add to cart
-                                  </a>
-                                </div>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
                               </div>
                             </div>
                           </div>
@@ -641,7 +569,7 @@ const ProductsPage = () => {
         >
           <div className="container py-5">
             <div className="row g-5">
-              <div className="col-lg-4 col-md-6">
+              <div className="col-lg-4 col-md-4 col-sm-4">
                 <div className="footer-item">
                   <h4 className="text-light mb-3 footer-head text-uppercase">
                     About us
@@ -657,7 +585,7 @@ const ProductsPage = () => {
                   </h4>
                 </div>
               </div>
-              <div className="col-lg-4 col-md-6">
+              <div className="col-lg-4 col-md-4 col-sm-4">
                 <div className="footer-item">
                   <h4 className="text-light mb-3 footer-head text-uppercase">
                     MEMBERSHIP LOGIN
@@ -673,7 +601,7 @@ const ProductsPage = () => {
                   </h4>
                 </div>
               </div>
-              <div className="col-lg-4 col-md-12 text-sm-center">
+              <div className="col-lg-4 col-md-4 col-sm-4 text-sm-center">
                 <img
                   src={instaImg}
                   className="footer-icon"
@@ -684,7 +612,7 @@ const ProductsPage = () => {
                   Ami-Pattes
                 </span>
                 <div className="d-flex flex-column text-start footer-item">
-                  <h4 className="text-light mb-3 footer-head text-sm-center">
+                  <h4 className="text-light mb-3 footer-head delivery-head text-sm-start">
                     FREE DELIVERY WORLD-WIDE OVER $500
                   </h4>
                 </div>

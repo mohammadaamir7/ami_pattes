@@ -14,6 +14,10 @@ import AboutUs from './screens/aboutUs';
 import ProtectedRoute from './modules/auth/protectedRoute';
 import AddOrderForm from './forms/addOrder';
 import ProductsPage from './screens/productsPage';
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./css/style.css";
+import "./css/bootstrap.min.css";
 
 function App() {
   return (
