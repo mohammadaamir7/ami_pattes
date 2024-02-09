@@ -10,6 +10,14 @@
   font-family: Italic-Style;
   src: url("../Fonts/Ayudisha-Free-Version.ttf");
 }
+@font-face {
+  font-family: Poppins;
+  src: url("../Fonts/Poppins-Medium.ttf");
+}
+@font-face {
+  font-family: Poppins-Normal;
+  src: url("../Fonts/Poppins-Light.ttf");
+}
 /*** Spinner Start ***/
 #spinner {
   opacity: 0;
@@ -546,11 +554,13 @@
   font-weight: lighter;
   letter-spacing: 3px;
 }
-
+.price-style {
+  font-family: Ayudisha;
+}
 .logo-para span {
   font-family: Italic-Style;
   font-size: 25px;
-  margin: 0 5px
+  margin: 0 5px;
 }
 
 .inner-div {
@@ -565,12 +575,6 @@
   font-family: Ayudisha;
   font-size: 17px;
   font-weight: lighter;
-}
-
-.footer-icon {
-  height: 80px;
-  width: 80px;
-  margin-bottom: 5%;
 }
 
 .review-heading {
@@ -606,17 +610,70 @@
 .products-margin {
   margin-top: 0%;
 }
-.tab-style{
+.tab-style {
   color: #9a9a74;
-  font-weight: bold;
   display: block;
-  /* font-size: 5px; */
+  font-family: Ayudisha;
+  cursor: pointer;
 }
-
-.active-product-tab{
-  color: #656545;
+.large-tab {
+  display: block;
+  width: 200px !important;
+  cursor: pointer;
 }
-
+.active-product-tab {
+  color: #6b6b4b;
+}
+.category-text {
+  margin-top: 30%;
+}
+.products-tabs-margin {
+  margin-top: 10%;
+}
+.login-btn {
+  margin-left: 68%;
+}
+.cart-margin {
+  margin-top: 7%;
+}
+.cart-title {
+  color: #9a9a74;
+  /* font-weight: lighter; */
+  font-family: Ayudisha;
+}
+.aboutus-head {
+  font-family: Juana;
+  font-size: 35px;
+  font-weight: bold;
+}
+.aboutus-head {
+  font-family: Juana;
+  font-size: 35px;
+  font-weight: bold;
+}
+.aboutus-para {
+  font-family: Ayudisha;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+.stars-img{
+  width: 160px;
+  height: 40px;
+}
+.delivery-head {
+  width: 500px;
+  font-weight: lighter;
+  letter-spacing: 4px;
+}
+.insta-logo{
+  margin-left: 20%;
+}
+.form-field{
+  width: 90% !important;
+}
+.form-field-style{
+  width: 100% !important;
+}
 @media (min-width: 992px) {
   .hero-header,
   .page-header {
@@ -649,7 +706,7 @@
   .control-display {
     display: block !important;
   }
-  .nav-margin{
+  .nav-margin {
     margin-left: -8%;
   }
   .logo-head {
@@ -664,12 +721,12 @@
   .products-margin {
     margin-top: 10%;
   }
-  .products-tab{
+  .products-tab {
     margin-left: 7%;
     margin-bottom: -7%;
   }
   .tab-style {
-    font-size: 17px;
+    font-size: 13px;
     font: bold !important;
     display: block;
     width: 150px !important;
@@ -678,12 +735,19 @@
     font-size: 12px;
   }
   .delivery-head {
-    display: block;
-    width: 250px
+    width: 260px;
+    font-size: 9px;
+    font-weight: lighter;
+    letter-spacing: 1.2px;
   }
-  .footer-icon{
-    width: 40px;
-    height: 40px;
+  .login-btn {
+    margin-left: 0%;
+  }
+  .aboutus-para {
+    font-size: 17px;
+  }
+  .cart-margin {
+    margin-top: 20%;
   }
 }
 
@@ -717,5 +781,14 @@
   }
   .login-style {
     margin-left: 0 !important;
+  }
+  .login-btn {
+    margin-left: 0%;
+  }
+  .aboutus-para {
+    font-size: 15px;
+  }
+  .footer-head {
+    font-size: 10px;
   }
 }

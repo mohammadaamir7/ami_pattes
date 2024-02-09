@@ -1,48 +1,81 @@
-import React from 'react'
-import Navbar from '../components/navbar'
-import { Container, Row, Col, Image } from 'react-bootstrap'
-import dpi from '../images/dpi-cropped.jpeg'
-import Footer from '../components/footer'
+import React from "react";
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 
 const AboutUs = () => {
   return (
-    <>
-    <Navbar />
     <div>
-    <Row className="blue-back">
-                <Col>
-                    <Container>
-                        <Row style={{marginTop: "10%"}}>
-                            <Col md={6}>
-                                <Image style={{height: '300px', width: '500px', marginLeft: '15%'}} fluid src={dpi} alt="screen" />
-                            </Col>
-                            <Col md={6}>
-                                <h1 className='white-head-style'>Responsive Design</h1>
-                                <h4 className='white-head-style' style={{margin: "10px"}}>Mobile Ready Template</h4>
-                                <p className='white-para-style'>Designed and style should work toward making you look good and feel good without a lot of efforts so you can get on with the things that matter</p>
-
-                                <i className="fa-brands fa-youtube white-icon-style"></i>
-                                <i className="fa-brands fa-instagram white-icon-style"></i>
-                                <i className="fa-brands fa-android white-icon-style"></i>
-                                <i className="fa-brands fa-html5 white-icon-style"></i>
-                                <i className="fa-brands fa-aws white-icon-style"></i>
-                            </Col>
-                        </Row>
-                    </Container>
-                </Col>
-            </Row>
-        <Container>
-            <br/>
-            <h1 className='head-style' style={{textAlign: 'center'}}>About US</h1>
-            <p className='para-style'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><br/>
-            <p className='para-style'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><br/>
-            <p className='para-style'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><br/>
-            <p className='para-style'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-        </Container>
+      <Navbar />
+      <div className="container-fluid py-5 mb-5 hero-header mt-5">
+        <div className="container py-5">
+          <div className="row g-5 align-items-center mt-5">
+            <div className="col-md-12 col-lg-7 d-flex align-items-lg-start align-items-sm-center flex-column">
+              <h1 className="mb-5 display-3 text-light hero-heading">
+                NEW ARRIVALS
+              </h1>
+              <div className="position-relative">
+                <button
+                  type="submit"
+                  className="btn btn-lg btn-outline-light text-uppercase btn-rounded-none btn-border-style w-100"
+                  // style={{ top: 0, right: "25%" }}
+                >
+                  SHOP NOW
+                </button>
+              </div>
+            </div>
+            <div className="col-md-12 col-lg-5">
+              <div
+                id="carouselId"
+                className="carousel slide position-relative"
+                data-bs-ride="carousel"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="container">
+        <div className="row">
+          <h3 className="text-uppercase aboutus-heading text-center icon-color aboutus-head">
+            About Us
+          </h3>
+        </div>
+        <div className="row">
+          <div className="col-md-12">
+            <p className="mt-5 aboutus-para">
+              At our establishment, we prioritize your pet's well-being and
+              happiness. Our commitment to quality extends to meticulously
+              selected treats that focus on enhancing longevity and overall
+              health. We aspire to create "the forever pet" by promoting a
+              healthy lifestyle through nutrition. Your pet's well-being is our
+              mission, contributing to a long, vibrant, and joyous existence.
+              Trust us to provide high-quality treats that not only delight but
+              also contribute to your pet's enduring joy and health.
+            </p>
+            <p className="aboutus-para">
+              Introducing our revolutionary Freeze-Dried pet food, a complete
+              and balanced meal in a convenient kibble format, encapsulating the
+              flavor and nutrition of natural, quality ingredients. Freeze-dried
+              pet treats offer a distinct advantage over conventional air-dried
+              pet food. The freeze- drying process preserves the treats' natural
+              flavors, nutrients, and texture without compromising on quality.
+              Unlike air-drying, which may involve exposure to higher
+              temperatures, freeze-drying retains more nutritional value,
+              ensuring your pet receives maximum benefits.
+            </p>
+            <p className="aboutus-para">
+              This method eliminates the need for preservatives or artificial
+              additives, making the treats a wholesome and natural choice. The
+              freeze-drying process also results in a lightweight and convenient
+              treat, maintaining the original taste and nutritional integrity.
+              Opt for freeze-dried pet treats to provide your furry friend with
+              a healthier, tastier, and more nourishing snack option.
+            </p>
+          </div>
+        </div>
+      </div>
+      <Footer />
     </div>
-    <Footer />
-    </>
-  )
-}
+  );
+};
 
-export default AboutUs
+export default AboutUs;

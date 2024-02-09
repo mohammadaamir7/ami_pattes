@@ -4,12 +4,20 @@ import instaImg from "../img/instagram.png";
 import fbImg from "../img/facebook.png";
 import { useState } from "react";
 
+import searchIcon from "../img/Web Icons-02.png";
+import barsIcon from "../img/Web Icons-03.png";
+import cartIcon from "../img/Web Icons-04.png";
+import Footer from "../components/footer";
+
 const ProductsPage = () => {
   const productsTabStates = {
     freezed: true,
+    seafood: false,
+    others: false,
     homeMade: false,
     bundled: false,
     suppliments: false,
+    toys: false,
   };
   const [tabStates, setTabStates] = useState(productsTabStates);
   const navigate = useNavigate();
@@ -21,7 +29,6 @@ const ProductsPage = () => {
         newState[tab] = false;
       }
       newState[activeTab] = true;
-      console.log("newState : ", newState);
 
       return newState;
     });
@@ -32,7 +39,7 @@ const ProductsPage = () => {
       {/* <Navbar /> */}
       <div className="container-fluid fixed-top">
         <div className="container-fluid px-0">
-          <nav class="navbar navbar-light bg-white navbar-expand-xl bg-body-tertiary h-auto">
+          <nav class="navbar navbar-light bg-white navbar-expand-xl bg-body-tertiary h-auto w-auto">
             <div class="container-fluid">
               <button
                 className="navbar-toggler border-0"
@@ -40,14 +47,17 @@ const ProductsPage = () => {
                 data-bs-toggle="collapse"
                 data-bs-target="#navbarCollapse"
               >
-                <span className="fa fa-bars icon-color"></span>
+                <img src={barsIcon} style={{ width: "40px", height: "25px" }} />
               </button>
               <button
                 className="btn-search btn btn-md-square bg-white nav-margin control-display"
                 data-bs-toggle="modal"
                 data-bs-target="#searchModal"
               >
-                <i className="fas fa-search icon-color"></i>
+                <img
+                  src={searchIcon}
+                  style={{ width: "30px", height: "30px" }}
+                />
               </button>
               <a href="index.html" className="navbar-brand mt-sm-3">
                 <h1 className="logo-head">Ami Pattes</h1>
@@ -58,19 +68,19 @@ const ProductsPage = () => {
               </a>
               {/* <div className="d-flex"> */}
               <button
-                className="btn-search btn btn-md-square bg-white"
+                className="btn-search btn btn-md-square bg-white login-btn"
                 data-bs-toggle="modal"
                 data-bs-target="#searchModal"
               >
                 <a
                   href="index.html"
-                  className="nav-link nav-link-color text-uppercase"
+                  className="nav-link nav-link-color text-uppercase my-auto"
                 >
                   Login
                 </a>
               </button>
-              <a href="#" className="position-relative ml-5 my-auto">
-                <i className="fa fa-shopping-bag fa-2x icon-color"></i>
+              <a href="#" className="position-relative my-auto">
+                <img src={cartIcon} style={{ width: "40px", height: "40px" }} />
                 <span
                   className="position-absolute rounded-circle d-flex align-items-center justify-content-center text-light px-1"
                   style={{
@@ -89,23 +99,55 @@ const ProductsPage = () => {
               {/* <span class="navbar-toggler-icon justify-content-end"></span> */}
             </div>
             {/* <div className="col-lg-4 text-start">
-                  <h1>Products</h1>
-                </div> */}
+              <h1>Products</h1>
+            </div> */}
             <div className="col-lg-12 text-lg-end text-sm-center ml-5 control-display products-tab">
               <ul className="nav d-inline-flex text-center mb-5">
                 <li className="nav-item">
                   <a
-                    className="d-flex m-2 py-2 active"
+                    className="d-flex m-2 py-2"
                     data-bs-toggle="pill"
                     onClick={() => handleTabChange("freezed")}
                   >
                     <span
-                      className={`text-uppercase tab-style text-uppercase + ${
+                      className={`text-uppercase tab-style text-uppercase nav-tabs-style + ${
                         tabStates.freezed ? "active-product-tab" : ""
                       }`}
                       style={{ width: "130px" }}
                     >
-                      Premium freeze-dired meat
+                      freeze-dried meat
+                    </span>
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    className="d-flex m-2 py-2"
+                    data-bs-toggle="pill"
+                    onClick={() => handleTabChange("seafood")}
+                  >
+                    <span
+                      className={`text-uppercase tab-style text-uppercase nav-tabs-style + ${
+                        tabStates.seafood ? "active-product-tab" : ""
+                      }`}
+                      style={{ width: "130px" }}
+                    >
+                      freeze-dried seafood
+                    </span>
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    className="d-flex m-2 py-2"
+                    data-bs-toggle="pill"
+                    onClick={() => handleTabChange("others")}
+                  >
+                    <span
+                      className={`text-uppercase tab-style text-uppercase nav-tabs-style + ${
+                        tabStates.others ? "active-product-tab" : ""
+                      }`}
+                      style={{ width: "130px" }}
+                    >
+                      freeze-dried others
                     </span>
                   </a>
                 </li>
@@ -116,7 +158,7 @@ const ProductsPage = () => {
                     onClick={() => handleTabChange("homeMade")}
                   >
                     <span
-                      className={`text-uppercase tab-style text-uppercase + ${
+                      className={`text-uppercase tab-style text-uppercase nav-tabs-style + ${
                         tabStates.homeMade ? "active-product-tab" : ""
                       }`}
                       style={{ width: "130px" }}
@@ -132,7 +174,7 @@ const ProductsPage = () => {
                     onClick={() => handleTabChange("bundled")}
                   >
                     <span
-                      className={`text-uppercase tab-style text-uppercase + ${
+                      className={`text-uppercase tab-style text-uppercase nav-tabs-style + ${
                         tabStates.bundled ? "active-product-tab" : ""
                       }`}
                       style={{ width: "130px" }}
@@ -148,12 +190,28 @@ const ProductsPage = () => {
                     onClick={() => handleTabChange("suppliments")}
                   >
                     <span
-                      className={`text-uppercase tab-style text-uppercase + ${
+                      className={`text-uppercase tab-style text-uppercase nav-tabs-style + ${
                         tabStates.suppliments ? "active-product-tab" : ""
                       }`}
                       style={{ width: "130px" }}
                     >
                       Pet Suppliments
+                    </span>
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    className="d-flex m-2 py-2"
+                    data-bs-toggle="pill"
+                    onClick={() => handleTabChange("toys")}
+                  >
+                    <span
+                      className={`text-uppercase tab-style text-uppercase nav-tabs-style + ${
+                        tabStates.toys ? "active-product-tab" : ""
+                      }`}
+                      style={{ width: "130px" }}
+                    >
+                      Pet toys
                     </span>
                   </a>
                 </li>
@@ -169,8 +227,8 @@ const ProductsPage = () => {
           className="container-fluid fruite py-5 mt-5"
           style={{ backgroundColor: "#e8e7e6" }}
         >
-          <div className="col-lg-12 text-lg-end text-sm-center ml-5">
-            <ul className="nav d-inline-flex text-center">
+          <div className="container col-lg-12 text-lg-end text-sm-center ml-5">
+            <ul className="nav d-inline-flex text-center products-tabs-margin">
               <li className="nav-item">
                 <a
                   className="d-flex m-2 py-2 active"
@@ -178,10 +236,44 @@ const ProductsPage = () => {
                   onClick={() => handleTabChange("freezed")}
                 >
                   <span
-                    className="text-uppercase icon-color tab-style text-uppercase"
+                    className={`text-uppercase tab-style large-tab text-uppercase + ${
+                      tabStates.freezed ? "active-product-tab" : ""
+                    }`}
                     style={{ width: "130px" }}
                   >
-                    Premium freeze-dired meat
+                    freeze-dried meat
+                  </span>
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="d-flex m-2 py-2 active"
+                  data-bs-toggle="pill"
+                  onClick={() => handleTabChange("seafood")}
+                >
+                  <span
+                    className={`text-uppercase tab-style large-tab text-uppercase + ${
+                      tabStates.seafood ? "active-product-tab" : ""
+                    }`}
+                    style={{ width: "130px" }}
+                  >
+                    freeze-dried seafood
+                  </span>
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="d-flex m-2 py-2 active"
+                  data-bs-toggle="pill"
+                  onClick={() => handleTabChange("others")}
+                >
+                  <span
+                    className={`text-uppercase tab-style large-tab text-uppercase + ${
+                      tabStates.others ? "active-product-tab" : ""
+                    }`}
+                    style={{ width: "130px" }}
+                  >
+                    Premium freeze-dried others
                   </span>
                 </a>
               </li>
@@ -192,7 +284,9 @@ const ProductsPage = () => {
                   onClick={() => handleTabChange("homeMade")}
                 >
                   <span
-                    className="tab-style text-uppercase"
+                    className={`text-uppercase tab-style large-tab text-uppercase + ${
+                      tabStates.homeMade ? "active-product-tab" : ""
+                    }`}
                     style={{ width: "130px" }}
                   >
                     Home made style treats
@@ -206,7 +300,9 @@ const ProductsPage = () => {
                   onClick={() => handleTabChange("bundled")}
                 >
                   <span
-                    className="tab-style text-uppercase"
+                    className={`text-uppercase tab-style large-tab text-uppercase + ${
+                      tabStates.bundled ? "active-product-tab" : ""
+                    }`}
                     style={{ width: "130px" }}
                   >
                     Bundled gift box
@@ -220,10 +316,28 @@ const ProductsPage = () => {
                   onClick={() => handleTabChange("suppliments")}
                 >
                   <span
-                    className="tab-style text-uppercase"
+                    className={`text-uppercase tab-style large-tab text-uppercase + ${
+                      tabStates.suppliments ? "active-product-tab" : ""
+                    }`}
                     style={{ width: "130px" }}
                   >
                     Pet Suppliments
+                  </span>
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="d-flex m-2 py-2 active"
+                  data-bs-toggle="pill"
+                  onClick={() => handleTabChange("toys")}
+                >
+                  <span
+                    className={`text-uppercase tab-style large-tab text-uppercase + ${
+                      tabStates.toys ? "active-product-tab" : ""
+                    }`}
+                    style={{ width: "130px" }}
+                  >
+                    Pet Toys
                   </span>
                 </a>
               </li>
@@ -399,6 +513,340 @@ const ProductsPage = () => {
                     </div>
                   </div>
                 )}
+                {tabStates.seafood && (
+                  <div
+                    id="tab-1"
+                    className={`tab-pane fade show p-0 + ${
+                      tabStates.seafood ? "active" : ""
+                    }`}
+                  >
+                    <div className="row g-4">
+                      <div className="col-lg-12">
+                        <div className="row g-4">
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Sea Food
+                                </h4>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Sea Food
+                                </h4>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Sea Food
+                                </h4>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Sea Food
+                                </h4>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Sea Food
+                                </h4>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Sea Food
+                                </h4>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Sea Food
+                                </h4>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Sea Food
+                                </h4>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                {tabStates.others && (
+                  <div
+                    id="tab-1"
+                    className={`tab-pane fade show p-0 + ${
+                      tabStates.others ? "active" : ""
+                    }`}
+                  >
+                    <div className="row g-4">
+                      <div className="col-lg-12">
+                        <div className="row g-4">
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Other Food
+                                </h4>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Other Food
+                                </h4>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Other Food
+                                </h4>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Other Food
+                                </h4>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Other Food
+                                </h4>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Other Food
+                                </h4>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Other Food
+                                </h4>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Other Food
+                                </h4>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
                 {tabStates.homeMade && (
                   <div
                     id="tab-2"
@@ -558,68 +1006,64 @@ const ProductsPage = () => {
                     </div>
                   </div>
                 )}
+                {tabStates.toys && (
+                  <div
+                    id="tab-4"
+                    className={`tab-pane fade show p-0 + ${
+                      tabStates.toys ? "active" : ""
+                    }`}
+                  >
+                    <div className="row g-4">
+                      <div className="col-lg-12">
+                        <div className="row g-4">
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Toys
+                                </h4>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-6 col-lg-4 col-xl-3">
+                            <div className="position-relative fruite-item">
+                              <div className="fruite-img">
+                                <img
+                                  src={productImg}
+                                  className="img-fluid w-100"
+                                  alt=""
+                                />
+                              </div>
+                              <div className="p-4 rounded-bottom">
+                                <h4 className="icon-color text-uppercase">
+                                  Toys
+                                </h4>
+                                <p className="fs-5 fw-bold mb-0 icon-color price-style">
+                                  $45
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </div>
-
-        <div
-          className="container-fluid text-white-50 footer pt-5 mt-5"
-          style={{ backgroundColor: "#9a9a74" }}
-        >
-          <div className="container py-5">
-            <div className="row g-5">
-              <div className="col-lg-4 col-md-4 col-sm-4">
-                <div className="footer-item">
-                  <h4 className="text-light mb-3 footer-head text-uppercase">
-                    About us
-                  </h4>
-                  <h4 className="text-light mb-3 footer-head text-uppercase">
-                    Contact us
-                  </h4>
-                  <h4 className="text-light mb-3 footer-head text-uppercase">
-                    ORDERS & DELIVERY
-                  </h4>
-                  <h4 className="text-light mb-3 footer-head text-uppercase">
-                    TERMS & CONDITION
-                  </h4>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-4 col-sm-4">
-                <div className="footer-item">
-                  <h4 className="text-light mb-3 footer-head text-uppercase">
-                    MEMBERSHIP LOGIN
-                  </h4>
-                  <h4 className="text-light mb-3 footer-head text-uppercase">
-                    BUSINESS WITH US
-                  </h4>
-                  <h4 className="text-light mb-3 footer-head text-uppercase">
-                    PRESS RELEASE
-                  </h4>
-                  <h4 className="text-light mb-3 footer-head text-uppercase">
-                    DONATION PROGRAM
-                  </h4>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-4 col-sm-4 text-sm-center">
-                <img
-                  src={instaImg}
-                  className="footer-icon"
-                  style={{ marginLeft: "15%" }}
-                />
-                <img src={fbImg} className="footer-icon" />
-                <span className="text-uppercase text-light footer-head">
-                  Ami-Pattes
-                </span>
-                <div className="d-flex flex-column text-start footer-item">
-                  <h4 className="text-light mb-3 footer-head delivery-head text-sm-start">
-                    FREE DELIVERY WORLD-WIDE OVER $500
-                  </h4>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Footer />
       </div>
     </>
   );
