@@ -1,8 +1,11 @@
 import React from "react";
 import Navbar from "../components/navbar";
 import productImg from "../img/shutterstock_653239414.jpg";
+import { useSelector } from "react-redux";
 
 const Checkout = () => {
+  const { cartItems } = useSelector((state) => state.cart);
+
   return (
     <div>
       <Navbar />
@@ -131,114 +134,54 @@ const Checkout = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">
-                          <div className="d-flex align-items-center mt-2">
-                            <img
-                              src={productImg}
-                              className="img-fluid rounded-circle"
-                              style={{ width: "90px", height: "90px" }}
-                              alt=""
-                            />
+                      {!cartItems?.length ? (
+                        <div className="row">
+                          <div className="col-md-12">
+                            <h1 className="text-center">No Data</h1>
                           </div>
-                        </th>
-                        <td
-                          className="py-5 cart-title"
-                          style={{ color: "#9a9a74" }}
-                        >
-                          Dried Meat
-                        </td>
-                        <td
-                          className="py-5 price-style"
-                          style={{ color: "#9a9a74" }}
-                        >
-                          $69.00
-                        </td>
-                        <td
-                          className="py-5 price-style"
-                          style={{ color: "#9a9a74" }}
-                        >
-                          2
-                        </td>
-                        <td
-                          className="py-5 price-style"
-                          style={{ color: "#9a9a74" }}
-                        >
-                          $138.00
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">
-                          <div className="d-flex align-items-center mt-2">
-                            <img
-                              src={productImg}
-                              className="img-fluid rounded-circle"
-                              style={{ width: "90px", height: "90px" }}
-                              alt=""
-                            />
-                          </div>
-                        </th>
-                        <td
-                          className="py-5 cart-title"
-                          style={{ color: "#9a9a74" }}
-                        >
-                          Home Made
-                        </td>
-                        <td
-                          className="py-5 price-style"
-                          style={{ color: "#9a9a74" }}
-                        >
-                          $69.00
-                        </td>
-                        <td
-                          className="py-5 price-style"
-                          style={{ color: "#9a9a74" }}
-                        >
-                          2
-                        </td>
-                        <td
-                          className="py-5 price-style"
-                          style={{ color: "#9a9a74" }}
-                        >
-                          $138.00
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">
-                          <div className="d-flex align-items-center mt-2">
-                            <img
-                              src={productImg}
-                              className="img-fluid rounded-circle"
-                              style={{ width: "90px", height: "90px" }}
-                              alt=""
-                            />
-                          </div>
-                        </th>
-                        <td
-                          className="py-5 cart-title"
-                          style={{ color: "#9a9a74" }}
-                        >
-                          Suppliments
-                        </td>
-                        <td
-                          className="py-5 price-style"
-                          style={{ color: "#9a9a74" }}
-                        >
-                          $69.00
-                        </td>
-                        <td
-                          className="py-5 price-style"
-                          style={{ color: "#9a9a74" }}
-                        >
-                          2
-                        </td>
-                        <td
-                          className="py-5 price-style"
-                          style={{ color: "#9a9a74" }}
-                        >
-                          $138.00
-                        </td>
-                      </tr>
+                        </div>
+                      ) : (
+                        cartItems?.map((item) => {
+                          return (
+                            <tr>
+                              <th scope="row">
+                                <div className="d-flex align-items-center mt-2">
+                                  <img
+                                    src={`${process.env.REACT_APP_BACKEND_URL}/uploads/${item?.image}`}
+                                    className="img-fluid rounded-circle"
+                                    style={{ width: "90px", height: "90px" }}
+                                    alt=""
+                                  />
+                                </div>
+                              </th>
+                              <td
+                                className="py-5 cart-title"
+                                style={{ color: "#9a9a74" }}
+                              >
+                                {item?.title}
+                              </td>
+                              <td
+                                className="py-5 price-style"
+                                style={{ color: "#9a9a74" }}
+                              >
+                                {item?.price}
+                              </td>
+                              <td
+                                className="py-5 price-style"
+                                style={{ color: "#9a9a74" }}
+                              >
+                                {item?.quantity}
+                              </td>
+                              <td
+                                className="py-5 price-style"
+                                style={{ color: "#9a9a74" }}
+                              >
+                                ${item?.quantity * item?.price}
+                              </td>
+                            </tr>
+                          );
+                        })
+                      )}
                       <tr>
                         <th scope="row"></th>
                         <td className="py-5"></td>
@@ -248,7 +191,14 @@ const Checkout = () => {
                         </td>
                         <td className="py-5">
                           <div className="py-3 border-bottom border-top">
-                            <p className="mb-0 text-dark">$414.00</p>
+                            <p className="mb-0 text-dark">
+                              $
+                              {cartItems?.reduce(
+                                (acc, curr) =>
+                                  acc + curr?.price * curr?.quantity,
+                                0
+                              )}
+                            </p>
                           </div>
                         </td>
                       </tr>
@@ -316,7 +266,14 @@ const Checkout = () => {
                         <td className="py-5"></td>
                         <td className="py-5">
                           <div className="py-3 border-bottom border-top">
-                            <p className="mb-0 text-dark">$135.00</p>
+                            <p className="mb-0 text-dark">
+                              $
+                              {cartItems?.reduce(
+                                (acc, curr) =>
+                                  acc + curr?.price * curr?.quantity,
+                                0
+                              )}
+                            </p>
                           </div>
                         </td>
                       </tr>
@@ -337,15 +294,9 @@ const Checkout = () => {
                         className="form-check-label cart-title"
                         for="Transfer-1"
                       >
-                        Direct Bank Transfer
+                        Credit Cards Visa Master
                       </label>
                     </div>
-                    <p className="text-start text-dark">
-                      Make your payment directly into our bank account. Please
-                      use your Order ID as the payment reference. Your order
-                      will not be shipped until the funds have cleared in our
-                      account.
-                    </p>
                   </div>
                 </div>
                 <div className="row g-4 text-center align-items-center justify-content-center border-bottom py-3">
@@ -362,7 +313,7 @@ const Checkout = () => {
                         className="form-check-label cart-title"
                         for="Payments-1"
                       >
-                        Check Payments
+                        Union Pay
                       </label>
                     </div>
                   </div>
@@ -381,7 +332,7 @@ const Checkout = () => {
                         className="form-check-label cart-title"
                         for="Delivery-1"
                       >
-                        Cash On Delivery
+                        American Express
                       </label>
                     </div>
                   </div>

@@ -603,6 +603,9 @@
 .control-display {
   display: none !important;
 }
+.control-display-large {
+  display: block !important;
+}
 
 .login-style {
   margin-left: 330px !important;
@@ -631,7 +634,7 @@
   margin-top: 10%;
 }
 .login-btn {
-  margin-left: 68%;
+  margin-left: 0%;
 }
 .cart-margin {
   margin-top: 7%;
@@ -659,6 +662,8 @@
 .stars-img{
   width: 160px;
   height: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .delivery-head {
   width: 500px;
@@ -673,6 +678,31 @@
 }
 .form-field-style{
   width: 100% !important;
+}
+.slick-prev,
+.slick-next {
+  font-size: 0px; /* Adjust the font size as needed */
+  color: #000000; /* Adjust the color as needed */
+  background: transparent;
+  border: none; /* Remove border */
+  outline: none; /* Remove outline */
+  z-index: 100; /* Ensure arrows are above other elements */
+}
+.arrow-size{
+  width: 35px;
+  height: 55px;
+}
+.left-arrow{
+  margin-left: 10%;
+}
+.right-arrow{
+  margin-right: 10%;
+}
+.left-arrow-small{
+  margin-left: 10%;
+}
+.right-arrow-small{
+  margin-right: 10%;
 }
 @media (min-width: 992px) {
   .hero-header,
@@ -705,6 +735,9 @@
   }
   .control-display {
     display: block !important;
+  }
+  .control-display-large {
+    display: none !important;
   }
   .nav-margin {
     margin-left: -8%;
@@ -749,6 +782,19 @@
   .cart-margin {
     margin-top: 20%;
   }
+  .left-arrow-small{
+    margin-left: -5%;
+  }
+  .right-arrow-small{
+    margin-right: -7% !important;
+  }
+  .small-slider{
+    margin-right: 12%;
+  }
+  .arrow-size {
+    width: 25px;
+    height: 30px;
+  }
 }
 
 @media (min-width: 993px) and (max-width: 1080px) {
@@ -790,5 +836,8 @@
   }
   .footer-head {
     font-size: 10px;
+  }
+  .control-display-large {
+    display: none !important;
   }
 }

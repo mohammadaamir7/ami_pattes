@@ -22,6 +22,8 @@ import "./css/bootstrap.min.css";
 import Checkout from './screens/checkout';
 import ProductDetails from './screens/productDetails';
 import AddProduct from './forms/addProduct';
+import ProductList from './screens/productList';
+import UpdateProduct from './forms/updateProduct';
 
 function App() {
   return (
@@ -38,7 +40,9 @@ function App() {
         <Route path='/add-order' element={<AddOrderForm />}/>
         <Route path='/' element={<LandingPage />}/>
         <Route path='/products' element={<ProductsPage />}/>
-        <Route path='/product' element={<ProductDetails />}/>
+        <Route path='/list-products' element={<ProductList />}/>
+        <Route path='/product/:id' element={<ProductDetails />}/>
+        <Route path='/update-product/:id' element={<UpdateProduct />}/>
         <Route path='/add-product' element={<AddProduct />}/>
         <Route path='/cart' element={<Cart />}/>
         <Route path='/checkout' element={<Checkout />}/>

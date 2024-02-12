@@ -4,9 +4,9 @@ import dogImg from "../img/shutterstock_1969088419.jpg";
 import bootleImg from "../img/c16a3d9e712761b8ea287dac578e7434.jpg";
 import topHitsImg from "../img/Web Icons-10.png";
 import reviewsImg from "../img/Web Icons-11.png";
-import starsImg from "../img/Web Icons-06.png";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import SliderComponent from "../components/slider";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -87,17 +87,16 @@ const LandingPage = () => {
           </div>
         </div>
 
-        <div className="container-fluid">
+        <div className="container-fluid mt-5">
           <div className="row">
-            <img src={reviewsImg} className="w-100 mb-5"/>
+            <img src={reviewsImg} className="w-100 mb-5" />
           </div>
           <div className="row">
-            <div className="col-md-12 col-sm-12 col-12">
+            <SliderComponent />
+
+            {/* <div className="col-md-12 col-sm-12 col-12 mt-5">
               <div className="text-center mb-3">
-                {/* <i class="fa fa-solid fa-star fa-2x icon-color"></i>
-                <i class="fa fa-solid fa-star fa-2x icon-color"></i>
-                <i class="fa fa-solid fa-star fa-2x icon-color"></i> */}
-                <img src={starsImg} className="stars-img"/>
+                <img src={starsImg} className="stars-img" />
               </div>
               <h1 className="icon-color text-center review-title">
                 "MY DOG LOVES IT, SO NICE!"
@@ -105,7 +104,7 @@ const LandingPage = () => {
               <h4 className="icon-color text-center mb-5 reviewer-name">
                 - ADA WU .
               </h4>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -131,17 +130,17 @@ const LandingPage = () => {
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-12">
-              <img src={topHitsImg} className="w-100 mb-5"/>
+              <img src={topHitsImg} className="w-100 mb-5" />
             </div>
           </div>
         </div>
 
-        <div className="container-fluid mb-5">
+        <div className="container mb-5">
           <div className="row">
             <div className="col-md-4">
               <div className="position-relative fruite-item">
                 <div className="fruite-img">
-                  <img src={bootleImg} className="img-fluid" alt="" />
+                  <img src={bootleImg} className="img-fluid" alt="" style={{ height: "250px" }} />
                 </div>
               </div>
             </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Grid,
   Button,
@@ -13,10 +13,10 @@ import * as Yup from "yup";
 import { TextareaAutosize } from "@mui/base/TextareaAutosize";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { styled } from "@mui/material/styles";
-import { useDispatch } from "react-redux";
-import { addProduct } from "../actions/productActions";
+import { useDispatch, useSelector } from "react-redux";
+import { addProduct, getProduct, updateProduct } from "../actions/productActions";
 import Navbar from "../components/navbar";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -40,12 +40,20 @@ const validationSchema = Yup.object().shape({
   price: Yup.string("Enter product's price").required("Price Required"),
 });
 
-const AddProduct = () => {
+const UpdateProduct = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const [category, setCategory] = useState("");
+  const { product } = useSelector((state) => state.product);
+  const [category, setCategory] = useState(product?.category);
   const [selectedFile, setSelectedFile] = useState(null);
+  const { id: productId } = useParams();
+
+  useEffect(() => {
+    dispatch(getProduct(productId));
+  }, [product, dispatch]);
+
+  // useEffect(() => {
+  // }, []);
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -67,10 +75,10 @@ const AddProduct = () => {
 
   const formik = useFormik({
     initialValues: {
-      title: "",
-      description: "",
-      quantity: 0,
-      price: 0,
+      title: product?.title,
+      description: product?.description,
+      quantity: product?.quantity,
+      price: product?.price,
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -82,7 +90,7 @@ const AddProduct = () => {
       formData.append("quantity", values.quantity);
       formData.append("price", values.price);
 
-      dispatch(addProduct(formData));
+      dispatch(updateProduct(productId, formData));
       navigate('/list-products')
     },
   });
@@ -224,7 +232,7 @@ const AddProduct = () => {
                     variant="contained"
                     type="submit"
                   >
-                    Add Product
+                    Update Product
                   </Button>
                 </form>
               </div>
@@ -236,4 +244,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default UpdateProduct;
