@@ -23,7 +23,7 @@ const NextArrow = (props) => (
     onClick={props.onClick}
     style={{ right: "-30px" }}
   >
-    <img src={rightArrow} className="arrow-size" />
+    <img src={rightArrow} className="arrow-size " />
     <span>&#8594;</span>
   </div>
 );
@@ -59,7 +59,7 @@ const ProductsSliderSmall = ({ handleTabChange, tabStates }) => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 3,
           slidesToScroll: 1,
         },
       },

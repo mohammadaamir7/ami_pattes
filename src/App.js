@@ -24,6 +24,7 @@ import ProductDetails from './screens/productDetails';
 import AddProduct from './forms/addProduct';
 import ProductList from './screens/productList';
 import UpdateProduct from './forms/updateProduct';
+import NavScrollExample from './components/test';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route path='/add-order' element={<AddOrderForm />}/>
         <Route path='/' element={<LandingPage />}/>
         <Route path='/products' element={<ProductsPage />}/>
+        <Route path='/test' element={<NavScrollExample />}/>
         <Route path='/list-products' element={<ProductList />}/>
         <Route path='/product/:id' element={<ProductDetails />}/>
         <Route path='/update-product/:id' element={<UpdateProduct />}/>
